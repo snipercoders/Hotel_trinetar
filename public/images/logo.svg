@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="112" viewBox="0 0 480 112" fill="none">
+  <g transform="translate(5 13)">
+    <path d="M8 73 43 27l18 22 13-16 34 40H8Z" fill="#E9F0E8" stroke="#2F6B3A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="m22 73 21-28 13 15 5-6 20 19H22Z" fill="#fff"/>
+    <path d="M36 37 43 27l9 11" stroke="#C8141E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3 81h108" stroke="#2F6B3A" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="130" y="55" fill="#0F2A44" font-family="Georgia,serif" font-size="30" font-weight="700" letter-spacing="1">HOTEL TRINETAR</text>
+  <text x="132" y="83" fill="#2F6B3A" font-family="Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="5">RESORTS · PATNITOP</text>
+</svg>

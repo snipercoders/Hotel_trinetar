@@ -1,27 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-charcoal: #171717;
-  --color-forest: #06110c;
-  --color-crimson: #a31c1b;
-  --font-display: var(--font-playfair), serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --color-navy: #0F2A44;
+  --color-deodar: #2F6B3A;
+  --color-deodar-light: #E9F0E8;
+  --color-roof: #C8141E;
+  --color-flame: #E8892B;
+  --color-paper: #F7F5F0;
+  --color-line: #E6E8EA;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), Arial, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
-body { background: var(--color-forest); color: white; font-family: var(--font-sans); }
-::selection { background: var(--color-crimson); color: white; }
-
-@keyframes rise-in {
-  from { opacity: 0; transform: translateY(22px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-rise { animation: rise-in 800ms cubic-bezier(0.2, 0.75, 0.25, 1) both; }
-.animate-rise-delay-1 { animation: rise-in 800ms 140ms cubic-bezier(0.2, 0.75, 0.25, 1) both; }
-.animate-rise-delay-2 { animation: rise-in 800ms 280ms cubic-bezier(0.2, 0.75, 0.25, 1) both; }
+body { background: #fff; color: var(--color-navy); font-family: var(--font-sans); }
+::selection { background: var(--color-deodar-light); color: var(--color-navy); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .animate-rise, .animate-rise-delay-1, .animate-rise-delay-2 { animation: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }

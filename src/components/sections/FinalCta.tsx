@@ -1,0 +1,5 @@
+import { site } from "@/data/site";
+
+export default function FinalCta() {
+  return <section className="bg-deodar px-5 py-16 text-center sm:px-8 sm:py-20 md:py-24"><p className="text-[11px] font-semibold uppercase tracking-[.28em] text-white/80">A mountain pause awaits</p><h2 className="mx-auto mt-3 max-w-3xl font-display text-4xl text-white sm:text-5xl">Your mountain room is waiting</h2><div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row"><a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-deodar shadow-sm transition hover:bg-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Call the hotel</a><a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noreferrer" className="rounded-full bg-roof px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-roof/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">WhatsApp us</a></div></section>;
+}

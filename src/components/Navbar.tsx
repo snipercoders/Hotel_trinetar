@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { site } from "@/data/site";
@@ -19,26 +19,24 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [open]);
 
-  return <header className="fixed inset-x-0 top-0 z-50">
-    <div className="relative z-20 flex items-center justify-between px-6 py-5 md:px-10">
-      <Link href="#home" onClick={() => setOpen(false)} className="max-w-[calc(100vw-6rem)] truncate font-display text-base font-bold uppercase tracking-[.12em] text-white drop-shadow sm:text-xl sm:tracking-widest md:text-2xl" aria-label={`${site.name} home`}>
-        {site.name} <span className="text-crimson">{site.sub}</span>
-      </Link>
-      <button type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="site-navigation" className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-forest text-white shadow-[0_8px_28px_rgba(0,0,0,0.45)] transition duration-300 hover:scale-105 hover:border-crimson hover:text-crimson focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-crimson md:absolute md:bottom-auto md:right-10 md:top-5">
-        {open ? <X size={23} /> : <Menu size={23} />}
+  return <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-white/90 text-navy shadow-sm backdrop-blur-md">
+    <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-8 sm:py-4">
+      <a href="#home" onClick={() => setOpen(false)} aria-label={`${site.name} home`} className="relative z-20 block w-[190px] sm:w-[230px]">
+        <Image src="/images/logo.png" alt={`${site.name} ${site.sub}`} width={543} height={96} className="h-auto w-full" />
+      </a>
+      <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
+        {links.slice(1).map(([href, label]) => <a key={href} href={href} className="text-sm text-navy transition hover:text-deodar">{label}</a>)}
+        <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noreferrer" className="rounded-full bg-roof px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-roof/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deodar">Book Now</a>
+      </nav>
+      <button type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-navigation" className="relative z-20 rounded-full border border-line bg-white p-2.5 text-navy shadow-sm transition hover:border-deodar hover:text-deodar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deodar xl:hidden">
+        {open ? <X size={21} /> : <Menu size={21} />}
       </button>
     </div>
-    <div className={`fixed inset-0 z-10 bg-forest/75 backdrop-blur-[2px] transition-opacity duration-300 ${open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden="true" onClick={() => setOpen(false)} />
-    <nav id="site-navigation" aria-label="Main navigation" aria-hidden={!open} className={`fixed inset-x-4 bottom-4 top-24 z-10 flex flex-col justify-between overflow-y-auto rounded-[2rem] border border-white/10 bg-forest px-7 py-9 shadow-2xl transition duration-300 sm:inset-x-6 sm:bottom-6 sm:px-12 sm:py-12 md:inset-x-8 md:bottom-7 md:top-28 md:px-16 md:py-14 ${open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"}`}>
-      <div className="grid flex-1 items-center gap-10 md:grid-cols-2">
-        <div className="flex flex-col items-start gap-2 sm:gap-3">
-          {links.map(([href, label], index) => <a key={href} href={href} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} style={{ transitionDelay: open ? `${index * 45}ms` : "0ms" }} className="group flex items-center gap-3 font-display text-3xl leading-tight tracking-tight text-white transition duration-300 hover:translate-x-1 hover:text-crimson sm:text-4xl md:text-5xl">
-            {label}<ArrowUpRight className="text-crimson transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" size={20} />
-          </a>)}
-        </div>
-        <div className="hidden text-center md:block"><p className="font-display text-5xl font-bold uppercase tracking-[0.12em] text-crimson">{site.name}</p><p className="mt-3 text-xs font-semibold uppercase tracking-[0.45em] text-white/75">{site.sub} · Patnitop</p><p className="mt-10 text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">Mountains · Comfort · Hospitality</p></div>
-      </div>
-      <div className="flex flex-col gap-5 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between sm:pt-7"><p className="text-sm text-slate-400">A peaceful stay in the heart of Patnitop.</p><a href={`https://wa.me/${site.whatsapp}`} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} className="inline-flex items-center justify-center gap-2 self-start rounded-full bg-crimson px-6 py-3.5 font-semibold text-white transition hover:bg-crimson/80 sm:self-auto">Book your stay <ArrowUpRight size={18} /></a></div>
+    <nav id="mobile-navigation" aria-label="Mobile navigation" aria-hidden={!open} className={`fixed inset-0 z-10 flex flex-col justify-center gap-5 overflow-y-auto bg-white px-8 pb-10 pt-24 transition duration-300 sm:gap-6 sm:px-14 xl:hidden ${open ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-full opacity-0"}`}>
+      {links.map(([href, label], index) => <a key={href} href={href} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} style={{ transitionDelay: open ? `${index * 35}ms` : "0ms" }} className="group flex items-center justify-between border-b border-line py-2 font-display text-3xl text-navy transition hover:text-deodar sm:text-4xl">
+        {label}<ArrowUpRight size={20} className="text-deodar" />
+      </a>)}
+      <a href={`https://wa.me/${site.whatsapp}`} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} className="mt-3 inline-flex items-center justify-center gap-2 self-start rounded-full bg-roof px-7 py-3.5 text-sm font-semibold text-white shadow-sm">Book Now <ArrowUpRight size={17} /></a>
     </nav>
   </header>;
 }

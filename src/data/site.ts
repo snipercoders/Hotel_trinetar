@@ -1,13 +1,14 @@
-// Contact, travel, room, and FAQ values marked DEMO need verification before publishing.
+// PREVIEW PLACEHOLDERS: verify contact details, links, distances, travel times,
+// room facts, reviews, and FAQ answers with the property before publishing.
 export const site = {
   name: "Hotel Trinetar",
   sub: "Resorts",
-  phone: "+91 99999 00000",
-  email: "hello@example.com",
+  phone: "+91 99999 00000", // Demo contact number
+  email: "hello@example.com", // Demo email address
   address: "Padoura Enclave, Patnitop, Jammu & Kashmir",
-  whatsapp: "910000000000",
-  mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Trinetar+Resorts+Patnitop",
-  tripadvisorUrl: "https://www.tripadvisor.com/Search?q=Hotel%20Trinetar%20Patnitop",
+  whatsapp: "910000000000", // Demo number
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Trinetar+Resorts+Patnitop", // Replace with verified pin
+  tripadvisorUrl: "https://www.tripadvisor.com/Search?q=Hotel%20Trinetar%20Patnitop", // Replace with property page
   highwayDistance: "1.5 km",
   nagTempleDistance: "About 3 km (demo)",
   roomCount: "12 rooms (demo)",
@@ -34,7 +35,7 @@ export const site = {
 
 export const stays = [
   { title: "A room above the clouds", subtitle: "A quiet place to pause and take in the mountain air.", image: "/images/demo-room.jpg", type: "Rooms" },
-  { title: "Into the deodar forest", subtitle: "Wake to the stillness of Patnitop's forest canopy.", image: "/images/demo-hotel.jpg", type: "Views" },
+  { title: "Into the deodar forest", subtitle: "Wake to the stillness of Patnitop's forest canopy.", image: "/images/hero-mobile.png", type: "Views" },
   { title: "A slower kind of stay", subtitle: "Make space for unhurried days in the mountains.", image: "/images/demo-room.jpg", type: "Rooms" },
 ];
 

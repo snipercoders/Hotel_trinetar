@@ -1,66 +1,27 @@
-import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/data/site";
 
-const footerLinks = [
-  { href: "/", label: "Home" },
-  { href: "/tariff", label: "Rooms & Tariff" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
-];
-
-const nearbyPlaces = ["Patnitop", "Nathatop", "Sanasar", "Madhatop", "Nag Temple"];
+const footerLinks = [["#home", "Home"], ["#stays", "Stays"], ["#experiences", "Experiences"], ["#moments", "Gallery"], ["#location", "Find us"], ["#faqs", "FAQs"]];
 
 export default function Footer() {
-  return (
-    <footer className="border-t border-white/10 bg-forest px-6 py-16 text-white">
-      <div className="mx-auto grid max-w-7xl gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <Link href="/" className="font-display text-2xl font-bold uppercase tracking-wide">
-            {site.name} <span className="text-crimson">{site.sub}</span>
-          </Link>
-          <p className="mt-5 max-w-xs text-sm leading-6 text-white/70">
-            A welcoming mountain stay, surrounded by deodar forests in beautiful Patnitop.
-          </p>
-          <p className="mt-5 text-sm leading-6 text-white/70">{site.address}</p>
-        </div>
-
-        <nav aria-label="Explore" className="flex flex-col items-start gap-4">
-          <h2 className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-white">Explore</h2>
-          {footerLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm text-white/70 transition hover:text-crimson">
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div>
-          <h2 className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-white">Nearby destinations</h2>
-          <ul className="space-y-4 text-sm text-white/70">
-            {nearbyPlaces.map((place) => <li key={place}>{place}</li>)}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-white">Plan your stay</h2>
-          <p className="mt-5 text-sm leading-6 text-white/70">Speak with our team to plan your Patnitop getaway.</p>
-          <a href={`tel:${site.phone}`} className="mt-5 block text-xl font-semibold tracking-wide text-white transition hover:text-crimson">
-            {site.phone}
-          </a>
-          <a
-            href={`https://wa.me/${site.whatsapp}?text=Hi, I would like to book a stay at Hotel Trinetar`}
-            className="mt-5 inline-flex text-sm font-semibold text-crimson transition hover:text-white"
-          >
-            Chat with us on WhatsApp <span className="ml-2" aria-hidden="true">↗</span>
-          </a>
-          <a href={`mailto:${site.email}`} className="mt-3 block text-sm text-white/70 transition hover:text-white">
-            {site.email}
-          </a>
-        </div>
+  return <footer className="border-t border-line bg-paper px-5 py-12 text-navy sm:px-8 sm:py-16">
+    <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_.8fr_1fr] lg:gap-14">
+      <div>
+        <a href="#home" aria-label={`${site.name} ${site.sub}`} className="block w-[210px] max-w-full"><Image src="/images/logo.png" alt={`${site.name} ${site.sub}`} width={543} height={96} className="h-auto w-full" /></a>
+        <p className="mt-5 max-w-sm text-sm leading-6 text-navy/75">A welcoming mountain stay in Patnitop, Jammu & Kashmir.</p>
+        <p className="mt-4 max-w-sm text-sm leading-6 text-navy/75">{site.address}</p>
       </div>
-
-      <div className="mx-auto mt-14 max-w-7xl border-t border-white/10 pt-6 text-xs text-white/50">
-        &copy; 2026 {site.name} {site.sub}. All rights reserved.
+      <nav aria-label="Footer links" className="flex flex-col items-start gap-3">
+        <h2 className="mb-1 text-xs font-semibold uppercase tracking-[.2em] text-deodar">Explore</h2>
+        {footerLinks.map(([href, label]) => <a key={href} href={href} className="text-sm text-navy/80 transition hover:text-deodar">{label}</a>)}
+      </nav>
+      <div>
+        <h2 className="text-xs font-semibold uppercase tracking-[.2em] text-deodar">Plan your stay</h2>
+        <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} className="mt-4 block text-base font-medium text-navy transition hover:text-deodar">{site.phone}</a>
+        <a href={`mailto:${site.email}`} className="mt-2 block break-all text-sm text-navy/75 transition hover:text-deodar">{site.email}</a>
+        <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full bg-roof px-5 py-3 text-sm font-semibold text-white transition hover:bg-roof/90">WhatsApp us</a>
       </div>
-    </footer>
-  );
+    </div>
+    <div className="mx-auto mt-10 max-w-7xl border-t border-line pt-5 text-xs text-navy/60">© 2026 {site.name} {site.sub}. All rights reserved.</div>
+  </footer>;
 }

@@ -1,0 +1,11 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export default function SiteChrome({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isLayoutPreview = pathname === "/layout-a" || pathname === "/layout-b" || pathname === "/layout-c";
+  return <>{!isLayoutPreview && <Navbar />}<main>{children}</main>{!isLayoutPreview && <Footer />}</>;
+}

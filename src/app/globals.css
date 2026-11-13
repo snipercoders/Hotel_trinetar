@@ -3,13 +3,13 @@
 @theme {
   --color-navy: #0F2A44;
   --color-deodar: #2F6B3A;
-  --color-deodar-light: #E9F0E8;
+  --color-deodar-light: #FFFFFF;
   --color-roof: #C8141E;
   --color-flame: #E8892B;
-  --color-paper: #F7F5F0;
+  --color-paper: #FFFFFF;
   --color-line: #E6E8EA;
-  --font-display: var(--font-playfair), Georgia, serif;
-  --font-sans: var(--font-inter), Arial, sans-serif;
+  --font-display: var(--font-playfair, Georgia), Georgia, serif;
+  --font-sans: var(--font-inter, Arial), Arial, sans-serif;
 }
 
 html { scroll-behavior: smooth; }

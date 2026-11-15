@@ -24,6 +24,11 @@ export default function Navbar() {
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [open]);
+  useEffect(() => {
+    const openMenu = () => setOpen(true);
+    window.addEventListener("open-mobile-menu", openMenu);
+    return () => window.removeEventListener("open-mobile-menu", openMenu);
+  }, []);
 
   const openBooking = () => {
     setOpen(false);
@@ -42,12 +47,10 @@ export default function Navbar() {
       </nav>
       <div className="relative z-20 flex items-center gap-2 xl:hidden">
         <button type="button" onClick={openBooking} className="rounded-full bg-roof px-4 py-2.5 text-xs font-semibold text-white shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deodar">Book</button>
+        <button type="button" onClick={() => setOpen(true)} aria-label="Open navigation menu" aria-expanded={open} aria-controls="mobile-navigation" className="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-3 text-xs font-semibold text-navy shadow-sm focus-visible:outline-2 focus-visible:outline-deodar"><Menu size={18}/><span>Menu</span></button>
       </div>
     </div>
   </header><div aria-hidden="true" className="h-14 md:h-[76px]"/>{portalReady && createPortal(<>
-    <button type="button" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-navigation" className={`fixed right-4 bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] z-[120] flex h-14 items-center gap-2 rounded-full border border-white/20 bg-navy px-5 text-sm font-semibold text-white shadow-xl transition hover:bg-deodar focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deodar xl:hidden ${open ? "translate-y-24 opacity-0 pointer-events-none" : ""}`}>
-      {open ? <X size={21} /> : <Menu size={21} />}<span>{open ? "Close" : "Menu"}</span>
-    </button>
     {open && <button type="button" aria-label="Close navigation menu" onClick={() => setOpen(false)} className="fixed inset-0 z-[90] cursor-default bg-navy/55 backdrop-blur-sm xl:hidden"/>}
     <nav id="mobile-navigation" aria-label="Mobile navigation" aria-hidden={!open} className={`fixed inset-0 z-[110] flex h-[100dvh] min-h-0 w-full flex-col overflow-y-auto overscroll-contain bg-white px-6 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] pt-[calc(env(safe-area-inset-top)+1rem)] text-navy shadow-2xl transition-transform duration-300 sm:px-10 xl:hidden ${open ? "translate-x-0" : "pointer-events-none translate-x-full"}`}>
       <div className="flex shrink-0 items-center justify-between border-b border-line pb-4"><a href="#home" onClick={() => setOpen(false)} aria-label={`${site.name} home`} className="relative block h-10 w-52"><Image src="/images/logo.png" alt={`${site.name} ${site.sub}`} fill sizes="208px" className="object-contain object-left"/></a><button type="button" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} aria-label="Close navigation menu" className="rounded-full border border-line p-3 text-navy shadow-sm focus-visible:outline-2 focus-visible:outline-deodar"><X size={20}/></button></div>
@@ -56,7 +59,7 @@ export default function Navbar() {
         {label}<ArrowUpRight size={19} className="text-deodar transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
       </a>)}</div>
       <button type="button" tabIndex={open ? 0 : -1} onClick={openBooking} className="mt-5 inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-roof px-7 text-sm font-semibold text-white shadow-sm focus-visible:outline-2 focus-visible:outline-deodar">Book your stay <ArrowUpRight size={17} /></button>
-      <p className="mt-4 shrink-0 text-center text-xs tracking-wide text-navy/55">A quieter pace, among the mountains.</p>
+      <p className="mt-4 shrink-0 text-center text-xs tracking-wide text-navy/55">A quieter pace, among the mountains you can enjoy.</p>
     </nav>
   </>, document.body)}</>;
 }

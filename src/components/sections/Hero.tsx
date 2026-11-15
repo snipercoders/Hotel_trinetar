@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { CalendarDays, Minus, Plus } from "lucide-react";
+import { CalendarDays, Menu, Minus, Plus } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { site } from "@/data/site";
 
@@ -162,8 +162,8 @@ export default function Hero() {
       </motion.div>
     </motion.div>}</AnimatePresence>
 
-    <AnimatePresence>{!heroVisible && !footerVisible && <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 18 }} className="fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-line bg-white px-4 pt-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] shadow-lg md:hidden">
-      <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} className="flex min-h-12 flex-1 items-center justify-center rounded-full border border-deodar text-sm font-semibold text-deodar focus-visible:outline-2 focus-visible:outline-deodar">Call</a><a href={whatsappUrl} target="_blank" rel="noreferrer" className="flex min-h-12 flex-1 items-center justify-center rounded-full bg-roof text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-deodar">WhatsApp</a>
+    <AnimatePresence>{!heroVisible && !footerVisible && <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 18 }} className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 gap-2 border-t border-line bg-white px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] shadow-lg md:hidden">
+      <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} className="flex min-h-12 items-center justify-center rounded-full border border-deodar text-sm font-semibold text-deodar focus-visible:outline-2 focus-visible:outline-deodar">Call</a><a href={whatsappUrl} target="_blank" rel="noreferrer" className="flex min-h-12 items-center justify-center rounded-full bg-roof text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-deodar">WhatsApp</a><button type="button" onClick={() => window.dispatchEvent(new Event("open-mobile-menu"))} className="flex min-h-12 items-center justify-center gap-1.5 rounded-full bg-navy text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-deodar"><Menu size={18}/>Menu</button>
     </motion.div>}</AnimatePresence>
   </>;
 }

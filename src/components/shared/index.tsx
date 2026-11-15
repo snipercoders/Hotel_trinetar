@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
@@ -49,8 +48,7 @@ export function DrawerNav() {
 }
 
 export function DevSwitcher() {
-  if (process.env.NODE_ENV === "production") return null;
-  return <nav aria-label="Layout previews" className="fixed bottom-3 right-3 z-[90] flex gap-1 rounded-full border border-line bg-white/95 p-1.5 text-xs shadow-lg backdrop-blur"><Link href="/layout-a" className="rounded-full px-3 py-2 hover:bg-paper focus-visible:outline-2 focus-visible:outline-deodar">A</Link><Link href="/layout-b" className="rounded-full px-3 py-2 hover:bg-paper focus-visible:outline-2 focus-visible:outline-deodar">B</Link><Link href="/layout-c" className="rounded-full px-3 py-2 hover:bg-paper focus-visible:outline-2 focus-visible:outline-deodar">C</Link></nav>;
+  return null;
 }
 
 export function StickyBook() {
